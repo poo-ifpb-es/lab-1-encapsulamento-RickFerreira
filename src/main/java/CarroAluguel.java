@@ -33,6 +33,10 @@ public class CarroAluguel {
         this.distanciaPercorrida = distancia; //define a distância percorrida pelo carro
     }
 
+    public void setSinistro(boolean sinistro) {
+        this.sinistro = sinistro; //define a distância percorrida pelo carro
+    }
+
     //Criando métodos extras
     public void alugar() throws CarroIndisponivelException {
         //muda o estado de um carro de “disponivel” para “indisponível”
@@ -50,8 +54,8 @@ public class CarroAluguel {
             //Exceção para avisar que o carro já está disponível, então não pode ser devolvido
             throw new CarroDisponivelException("O carro está disponível.");
         }
-        
-        if (debito > 0) {
+
+        if (getDebito() > 0) {
             //Exceção para avisar que o carro ainda tem debitos, então não pode ser devolvido
             throw new CarroNaoPagoException("O carro não foi pago.");
         }
@@ -82,12 +86,12 @@ public class CarroAluguel {
         return totalDebito;
     }
 
-    public void pagar() throws CarroDisponivelException {
+    public void pagar() throws CarroDisponivelException, CarroNaoPagoException {
         //Um carro disponível não pode ser pago
         if (disponivel) {
             throw new CarroDisponivelException("O carro está disponível.");
         }
         //Zerando os debitos do carro
-        debito = 0;
+       distanciaPercorrida = 0;
     }
 }
