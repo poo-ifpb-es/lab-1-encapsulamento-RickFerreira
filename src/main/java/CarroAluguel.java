@@ -7,25 +7,6 @@ public class CarroAluguel {
     private boolean sinistro;
     private float debito;
 
-    //Classes de exeção
-    public class CarroDisponivelException extends Exception {
-        public CarroDisponivelException(String message) {
-            super(message);
-        }
-    }
-    
-    public class CarroNaoPagoException extends Exception {
-        public CarroNaoPagoException(String message) {
-            super(message);
-        }
-    }
-    
-    public class CarroIndisponivelException extends Exception {
-        public CarroIndisponivelException(String message) {
-            super(message);
-        }
-    }
-
     //Criando construtor
     public CarroAluguel(float valorPorKm) {
         this.valorPorKm = valorPorKm; //pegando o valor passado
